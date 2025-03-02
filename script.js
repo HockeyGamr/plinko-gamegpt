@@ -34,7 +34,7 @@ function createBoard() {
 // Simulate the chip falling
 function dropChip() {
   const betAmount = parseFloat(betAmountInput.value);
-  if (isNaN(betAmount) {
+  if (isNaN(betAmount)) {
     alert('Please enter a valid bet amount.');
     return;
   }
