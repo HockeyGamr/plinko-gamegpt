@@ -35,13 +35,23 @@ body {
 
 .slot {
   position: absolute;
-  width: 50px;
+  width: 75px;
   height: 20px;
   background-color: #666;
   color: #fff;
   text-align: center;
   line-height: 20px;
   font-size: 12px;
+  bottom: 0;
+}
+
+.chip {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: red;
+  border-radius: 50%;
+  transition: top 0.05s linear, left 0.05s linear;
 }
 
 .controls {

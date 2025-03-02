@@ -6,6 +6,8 @@ const resultText = document.getElementById('resultText');
 const PAYOUTS = [5.6, 2.1, 0.5, 0.5]; // Payout multipliers
 const ROWS = 9; // Number of rows
 const PEG_SPACING = 30; // Spacing between pegs
+const SLOT_WIDTH = 75; // Width of each slot
+const BOARD_WIDTH = 300; // Width of the Plinko board
 
 // Create the Plinko board with pegs and slots
 function createBoard() {
@@ -25,13 +27,13 @@ function createBoard() {
     const slot = document.createElement('div');
     slot.className = 'slot';
     slot.textContent = value;
-    slot.style.left = `${50 + index * 75}px`;
+    slot.style.left = `${index * SLOT_WIDTH}px`;
     slot.style.top = `${350}px`;
     board.appendChild(slot);
   });
 }
 
-// Simulate the chip falling
+// Simulate the chip falling with gravity and bouncing
 function dropChip() {
   const betAmount = parseFloat(betAmountInput.value);
   if (isNaN(betAmount)) {
@@ -40,18 +42,24 @@ function dropChip() {
   }
 
   let position = 0; // Start in the middle
+  let velocityY = 0; // Vertical velocity
+  const gravity = 0.5; // Gravity effect
   const chip = document.createElement('div');
-  chip.className = 'peg';
-  chip.style.backgroundColor = 'red';
+  chip.className = 'chip';
   chip.style.left = `${150}px`;
   chip.style.top = `${20}px`;
   board.appendChild(chip);
 
   const interval = setInterval(() => {
-    position += Math.random() < 0.5 ? -1 : 1; // Move left or right
-    chip.style.left = `${150 + position * 10}px`;
-    chip.style.top = `${parseInt(chip.style.top) + 10}px`;
+    // Apply gravity
+    velocityY += gravity;
+    chip.style.top = `${parseInt(chip.style.top) + velocityY}px`;
 
+    // Move left or right randomly
+    position += Math.random() < 0.5 ? -1 : 1;
+    chip.style.left = `${150 + position * 10}px`;
+
+    // Check if the chip hits the bottom
     if (parseInt(chip.style.top) >= 350) {
       clearInterval(interval);
       const payout = getPayout(position);
@@ -59,15 +67,13 @@ function dropChip() {
       resultText.textContent = `Payout: ${payout}x | You win: ${winnings.toFixed(2)}`;
       setTimeout(() => board.removeChild(chip), 1000); // Remove chip after landing
     }
-  }, 50);
+  }, 20);
 }
 
 // Determine the payout based on the final position
 function getPayout(position) {
-  if (position < -2) return PAYOUTS[0];
-  if (position < 0) return PAYOUTS[1];
-  if (position < 2) return PAYOUTS[2];
-  return PAYOUTS[3];
+  const slotIndex = Math.floor((position + 2) / (SLOT_WIDTH / 2));
+  return PAYOUTS[slotIndex] || PAYOUTS[PAYOUTS.length - 1];
 }
 
 // Initialize the game
