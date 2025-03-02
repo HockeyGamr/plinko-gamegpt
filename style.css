@@ -1,0 +1,73 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.game-container {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.plinko-board {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  margin: 20px auto;
+  background-color: #e0e0e0;
+  border: 2px solid #333;
+}
+
+.peg {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background-color: #333;
+  border-radius: 50%;
+}
+
+.slot {
+  position: absolute;
+  width: 50px;
+  height: 20px;
+  background-color: #666;
+  color: #fff;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+}
+
+.controls {
+  margin-top: 20px;
+}
+
+#betAmount {
+  padding: 10px;
+  width: 150px;
+  margin-right: 10px;
+}
+
+#dropButton {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#dropButton:hover {
+  background-color: #218838;
+}
+
+.result {
+  margin-top: 20px;
+  font-size: 18px;
+}
