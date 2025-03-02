@@ -3,10 +3,10 @@ const betAmountInput = document.getElementById('betAmount');
 const dropButton = document.getElementById('dropButton');
 const resultText = document.getElementById('resultText');
 
-const PAYOUTS = [5.6, 2.1, 0.5, 0.5]; // Payout multipliers
-const ROWS = 9; // Number of rows
+const PAYOUTS = [5.6, 2.1, 1.1, 1, 0.5, 1, 1.1, 2.1, 5.6]; // Payout multipliers
+const ROWS = 10; // Number of rows (increased from 9 to 10)
 const PEG_SPACING = 30; // Spacing between pegs
-const SLOT_WIDTH = 75; // Width of each slot
+const SLOT_WIDTH = 37.5; // Width of each slot (adjusted for 8 slots)
 const BOARD_WIDTH = 300; // Width of the Plinko board
 
 // Create the Plinko board with pegs and slots
@@ -22,7 +22,7 @@ function createBoard() {
   }
 
   // Create slots at the bottom
-  const slotValues = ['5.6x', '2.1x', '0.5x', '0.5x'];
+  const slotValues = ['5.6x', '2.1x', '1.1x', '1x', '0.5x', '1x', '1.1x', '2.1x', '5.6x'];
   slotValues.forEach((value, index) => {
     const slot = document.createElement('div');
     slot.className = 'slot';
@@ -72,7 +72,8 @@ function dropChip() {
 
 // Determine the payout based on the final position
 function getPayout(position) {
-  const slotIndex = Math.floor((position + 2) / (SLOT_WIDTH / 2));
+  // Map the position to a slot index
+  const slotIndex = Math.floor((position + 4) / (SLOT_WIDTH / 2));
   return PAYOUTS[slotIndex] || PAYOUTS[PAYOUTS.length - 1];
 }
 

@@ -35,7 +35,7 @@ body {
 
 .slot {
   position: absolute;
-  width: 75px;
+  width: 37.5px; /* Adjusted for 8 slots */
   height: 20px;
   background-color: #666;
   color: #fff;
