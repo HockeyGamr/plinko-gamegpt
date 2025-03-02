@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  background-color: #13212e; /* New background color */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,34 +10,36 @@ body {
 
 .game-container {
   text-align: center;
-  background-color: #fff;
+  background-color: #1c2a38; /* Darker container background */
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  width: 80%; /* Take up more room in the browser */
+  max-width: 800px; /* Limit maximum width */
 }
 
 .plinko-board {
   position: relative;
-  width: 300px;
-  height: 400px;
+  width: 600px; /* Increased board width */
+  height: 500px; /* Increased board height */
   margin: 20px auto;
-  background-color: #e0e0e0;
-  border: 2px solid #333;
+  background-color: #2c3e50; /* Darker board background */
+  border: 2px solid #34495e;
 }
 
 .peg {
   position: absolute;
-  width: 10px;
-  height: 10px;
-  background-color: #333;
+  width: 12px; /* Slightly larger pegs */
+  height: 12px;
+  background-color: #34495e;
   border-radius: 50%;
 }
 
 .slot {
   position: absolute;
-  width: 37.5px; /* Adjusted for 8 slots */
+  width: 40px; /* Smaller slots */
   height: 20px;
-  background-color: #666;
+  background-color: #34495e;
   color: #fff;
   text-align: center;
   line-height: 20px;
@@ -47,9 +49,9 @@ body {
 
 .chip {
   position: absolute;
-  width: 15px;
-  height: 15px;
-  background-color: red;
+  width: 20px; /* Larger chip */
+  height: 20px;
+  background-color: #e74c3c; /* Red chip */
   border-radius: 50%;
   transition: top 0.05s linear, left 0.05s linear;
 }
@@ -62,6 +64,10 @@ body {
   padding: 10px;
   width: 150px;
   margin-right: 10px;
+  background-color: #34495e;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
 }
 
 #dropButton {
@@ -80,4 +86,5 @@ body {
 .result {
   margin-top: 20px;
   font-size: 18px;
+  color: #fff; /* White text for better contrast */
 }
